@@ -4,7 +4,7 @@ const crushReducerDefaultState = 0
 export default (state = crushReducerDefaultState, action) => {
   switch (action.type) {
     case 'ADD_CRUSHED':
-      return state + action.amount
+      return state + action.count
     // case 'REMOVE_CONNECTOR':
     //   console.log(action.id)
     //   return state.filter(({ id }) => id !== action.id)

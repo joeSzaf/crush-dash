@@ -6,11 +6,13 @@ import { addCrushed } from '../actions/crushed'
 const CrushedStatsTile = (props) => {
   return (
     <div>
-      {props.crushed}
+      Pull ups crushed: {props.crushed}
       <AddCrushButton
-        amount={1}
-        handleClick={
-          () => { props.dispatch(addCrushed({ amount: 1 })) }
+        crushed={props.crushed}
+        onSubmit={
+          (payload) => {
+            console.log(payload)
+            props.dispatch(addCrushed(payload)) }
         }
       />
     </div>
