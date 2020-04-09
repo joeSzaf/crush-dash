@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
 userSchema.virtual('seshes', {
     ref: 'Sesh',
     localField: '_id',
-    foreignField: 'owner'
+    foreignField: 'user'
 })
 
 userSchema.methods.toJSON = function () {

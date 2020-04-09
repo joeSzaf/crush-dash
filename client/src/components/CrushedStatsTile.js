@@ -1,28 +1,54 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import AddCrushButton from './AddCrushButton'
-import { addCrushed } from '../actions/crushed'
+import { addSesh, getSeshes } from '../actions/seshes'
 
-const CrushedStatsTile = (props) => {
-  return (
-    <div>
-      Pull ups crushed: {props.crushed}
-      <AddCrushButton
-        crushed={props.crushed}
-        onSubmit={
-          (payload) => {
-            console.log(payload)
-            props.dispatch(addCrushed(payload)) }
-        }
-      />
-    </div>
-  )
+class CrushedStatsTile extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.props.getSeshes()
+  }
+
+  render() {
+    console.log(this.props)
+    const seshes = this.props.sessions.map(sesh => {
+      return(
+        <p>sesh!</p>
+      )
+    })
+
+    return (
+      <div>
+      <h2>Items!</h2>
+      {seshes}
+        <AddCrushButton
+          onSubmit={
+            (payload) => {
+              console.log(payload)
+              this.props.dispatch(addSesh(payload)) }
+          }
+        />
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
   return {
-    crushed: state.crushed
+    sessions: state.seshInformation.seshes
   }
 }
 
-export default connect(mapStateToProps)(CrushedStatsTile)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getSeshes: () => dispatch(getSeshes())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CrushedStatsTile)

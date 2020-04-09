@@ -6,7 +6,7 @@ const router = new express.Router()
 router.post('/seshes', auth, async (req, res) => {
     const sesh = new Sesh({
         ...req.body,
-        owner: req.user._id
+        user: req.user._id
     })
 
     try {

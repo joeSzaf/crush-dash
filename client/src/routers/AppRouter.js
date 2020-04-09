@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom'
 import Header from '../components/Header'
-import WelcomePage from '../components/WelcomePage'
 import CrushedDashboardPage from '../components/CrushedDashboardPage'
 import AddConnectorPage from '../components/AddConnectorPage'
 import EditConnectorPage from '../components/EditConnectorPage'
@@ -13,8 +12,7 @@ const AppRouter = () => (
     <div>
       <Header />
       <Switch>
-        <Route path='/' component={WelcomePage} exact={true} />
-        <Route path='/home' component={CrushedDashboardPage} exact={true} />
+        <Route path='/' component={CrushedDashboardPage} exact={true} />
         <Route path='/add' component={AddConnectorPage} />
         <Route path='/edit/:id' component={EditConnectorPage} />
         <Route path='/help' component={HelpPage} />
