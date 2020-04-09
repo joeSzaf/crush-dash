@@ -5,28 +5,26 @@ class AddCrushButton extends React.Component {
     super(props)
 
     this.state = {
-      count: props.count ? props.crushed.count : '',
+      sesh: '',
       error: ''
     }
   }
 
-  onCountChange = (e) => {
-    const count = e.target.value;
-    this.setState(() => ({ count }));
+  onSeshChange = (e) => {
+    const sesh = e.target.value;
+    this.setState(() => ({ sesh }));
   }
 
   onSubmit = (e) => {
     e.preventDefault()
 
-    if (!this.state.count) {
+    if (!this.state.sesh) {
       this.setState(() => ({ error: 'Please include a number of things crushed.' }))
-    } else if (this.state.count < 1) {
-      this.setState(() => ({ error: 'Please submit a number of things crushed above 1.' }))
     } else {
       this.props.onSubmit({
-        count: parseInt(this.state.count)
+        sesh: this.state.sesh
       })
-      this.setState(() => ({ error: '', count: 0 }))
+      this.setState(() => ({ error: '', sesh: '' }))
     }
   }
 
@@ -36,10 +34,10 @@ class AddCrushButton extends React.Component {
         {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.onSubmit}>
           <input
-            type="number"
+            type="text"
             placeholder="amount CRUSHED"
-            value={this.state.count}
-            onChange={this.onCountChange}
+            value={this.state.sesh}
+            onChange={this.onSeshChange}
           />
           <button>CRUSH'D</button>
         </form>
